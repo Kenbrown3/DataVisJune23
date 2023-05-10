@@ -6,7 +6,7 @@
 <script>
 import * as d3 from "d3";
 import CarFilter from "./CarFilter";
-import { link, links } from 'svelte-routing'
+import {link} from 'svelte-routing'
 export let data;
 
 const { Cars, POIs, Stop } = data;
@@ -18,12 +18,6 @@ import _ from 'lodash';
 
  let selected = "All";
 	    let options=all.concat(uniqueIDs);
-
-
-
-let NS=CarFilter.CarTrackNonSelect(Cars,selected);
-let P=POIs
-
 
 const margin = { top: 15, bottom: 50, left: 50, right: 20 };
 const height=600;
@@ -46,8 +40,8 @@ var colorscale=d3.scaleOrdinal(["professional","housing","catering","domestic","
 		{#each options as value}<option {value}>{value}</option>{/each}
 	</select>
 	{#if selected !=="All"}
-	<div use:links>
-		Go to <a href="/cardetails">details</a> for car {selected}
+	<div use:link>
+		Go to <a href="/cardetails/?carid={selected}">details</a> for car {selected}
 	</div>
 	{/if}
 </p>
