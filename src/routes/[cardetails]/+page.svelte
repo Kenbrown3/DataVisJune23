@@ -1,7 +1,14 @@
-<h1>Kendall Brown - KU Leuven - r0773111</h1>
-<h2>
-  Details for car {selected}
-</h2>
+<div use:link>
+  <a href="/">Car Overview</a> 
+</div>
+<div use:link>
+  <nav data-sveltekit-reload>
+    <a href="?carid={prevcar}">Previous Car</a>
+    <a href="?carid={nextcar}">Next Car</a> 
+  </nav>
+</div>
+
+
 
 <script>
     import * as d3 from "d3";
@@ -25,11 +32,19 @@
     var xscale=d3.scaleLinear().domain([24.91,24.824]).range([innerHeight,0]);
     var colorscale=d3.scaleOrdinal(["professional","housing","catering","domestic","other"],["blue","brown","green","cyan","yellow"]);
     
+    import _ from 'lodash';
+    let idList = Cars.map(obj => obj.car_id)
+    let uniqueIDs = _.uniq(idList);
+
+    var nextcar=uniqueIDs[uniqueIDs.indexOf(selected)+1];
+    var prevcar=uniqueIDs[uniqueIDs.indexOf(selected)-1];
+    
     </script>
 
-<div use:link>
-    <a href="/">Car Overview</a> 
-</div>
+
+<h2>
+  Details for car {selected}
+</h2>
 
 <main>
 	<svg {width}{height}>
@@ -39,7 +54,7 @@
 				cx={xscale(data.long)}
 				cy={yscale(data.lat)}
 				r=3
-				fill="black"
+				fill="teal"
 				fill-opacity=0.5/>
 			{/each}
 		</g>
