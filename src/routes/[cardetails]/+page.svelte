@@ -28,7 +28,7 @@
     </script>
 
 <div use:link>
-    <a href="/">Overview</a> 
+    <a href="/">Car Overview</a> 
 </div>
 
 <main>
@@ -40,7 +40,7 @@
 				cy={yscale(data.lat)}
 				r=3
 				fill="black"
-				fill-opacity=1/>
+				fill-opacity=0.5/>
 			{/each}
 		</g>
 	</svg>
