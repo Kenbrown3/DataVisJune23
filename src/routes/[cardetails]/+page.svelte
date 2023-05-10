@@ -1,6 +1,6 @@
 <h1>Kendall Brown - KU Leuven - r0773111</h1>
 <h2>
-  Details
+  Details for car {selected}
 </h2>
 
 <script>
