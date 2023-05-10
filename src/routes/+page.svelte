@@ -6,6 +6,7 @@
 <script>
 import * as d3 from "d3";
 import CarFilter from "./CarFilter";
+import { link, links } from 'svelte-routing'
 export let data;
 
 const { Cars, POIs, Stop } = data;
@@ -36,11 +37,19 @@ var colorscale=d3.scaleOrdinal(["professional","housing","catering","domestic","
 
 </script>
 
+<!-- <a href="/" use:link>Home</a>
+<a href="/cardetails" use:link>Details</a> -->
+
 <p>
 	Select Car to Highlight
 	<select bind:value={selected}>
 		{#each options as value}<option {value}>{value}</option>{/each}
 	</select>
+	{#if selected !=="All"}
+	<div use:links>
+		Go to <a href="/cardetails">details</a> for car {selected}
+	</div>
+	{/if}
 </p>
 <main>
 	<svg {width}{height}>
