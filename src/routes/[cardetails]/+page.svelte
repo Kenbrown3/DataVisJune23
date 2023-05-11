@@ -25,6 +25,7 @@
     const margin = { top: 15, bottom: 50, left: 20, right: 20 };
     const height=300;
     const width=300;
+
     const innerHeight = height - margin.top - margin.bottom,
     innerWidth = width - margin.left - margin.right;
     
@@ -48,7 +49,13 @@
     var nextcar=uniqueIDs[uniqueIDs.indexOf(selected)+1];
     var prevcar=uniqueIDs[uniqueIDs.indexOf(selected)-1];
 
+   import { Slider } from "fluent-svelte";
+   let cmt=0;
    
+   
+
+   
+
     
   </script>
 
@@ -58,19 +65,35 @@
 </h2>
 
 <main>
+
+
+<div>
+  <input type=range bind:value={cmt} min={0} max={20160} step={1}>
+</div>
+
+
 	<svg {width}{height}>
 		<g transform={`translate(${margin.left},${margin.top})`}>
-			{#each CarFilter.CarTrackSelect(Cars,selected) as data,i}
+			{#each CarFilter.CarTrackNonSelect(Cars,selected) as data,i}
 				<circle 
 				cx={xscale(data.long)}
 				cy={yscale(data.lat)}
 				r=3
 				fill="teal"
-				fill-opacity=0.5/>
+				fill-opacity=0.05/>
 			{/each}
+      {#each CarFilter.CarTrackSelect(Cars,selected,cmt) as data,i}
+      <circle 
+      cx={xscale(data.long)}
+      cy={yscale(data.lat)}
+      r=3
+      fill="red"
+      fill-opacity=1/>
+    {/each}
+
 		</g>
 	</svg>
-  <svg {width} {height}>
+  <svg width={width} {height}>
 		<g class="stops" transform={`translate(${margin.left},${margin.top})`} >
 			{#each CarFilter.POIstop(Stop,selected) as data,i}
 				<rect
@@ -82,6 +105,13 @@
           <title>{data.start.time} - {data.end.time} : {data.location.name} ({data.location.location_type})</title>
         </rect>
 			{/each}
+      <rect
+        y={stopscaley(Math.floor((cmt*60/86400)+6))-margin.top}
+        x={stopscalex((cmt*60)%86400)+margin.right}
+        width={5}
+        height={17}
+        style={"fill:black"}
+      />
       {#each yticks as tick}
       <text x={0} y={stopscaley(tick)}>
           {tick}
