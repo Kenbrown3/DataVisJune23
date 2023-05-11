@@ -28,6 +28,7 @@ var yscale=d3.scaleLinear().domain([36.09,36.045]).range([0,innerWidth]);
 var xscale=d3.scaleLinear().domain([24.91,24.824]).range([innerHeight,0]);
 var colorscale=d3.scaleOrdinal(["professional","housing","catering","domestic","other"],["blue","brown","green","cyan","yellow"]);
 
+
 </script>
 
 <!-- <a href="/" use:link>Home</a>
