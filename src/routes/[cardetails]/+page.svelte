@@ -52,7 +52,17 @@
    import { Slider } from "fluent-svelte";
    let cmt=0;
    
-   
+   let widthfunc=(xval)=>{
+    if(xval<5){
+      return xval;
+    }
+    if(xval>230){
+      return 5/(260-xval);
+    }
+    else{
+      return 5
+    }
+   }
 
    
 
