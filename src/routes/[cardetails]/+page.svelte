@@ -52,11 +52,7 @@
    import { Slider } from "fluent-svelte";
    let cmt=0;
    
-$:console.log(cmt);
 
-   
-
-    
   </script>
 
 
@@ -66,13 +62,13 @@ $:console.log(cmt);
 
 <main>
 
-
 <div>
-  <input type=range bind:value={cmt} min={0} max={20160} step={1}>
+  
+  <input type=range bind:value={cmt} min={0} max={20159} step={1}>
 </div>
 
 
-	<svg {width}{height}>
+	<svg class="car" {width}{height}>
 		<g transform={`translate(${margin.left},${margin.top})`}>
 			{#each CarFilter.CarTrackNonSelect(Cars,selected) as data,i}
 				<circle 
@@ -80,7 +76,9 @@ $:console.log(cmt);
 				cy={yscale(data.lat)}
 				r=3
 				fill="teal"
-				fill-opacity=0.05/>
+				fill-opacity=0.05>
+        <!-- <title>{data.cumulative_minute_total}</title> -->
+      </circle>
 			{/each}
       {#each CarFilter.CarTrackSelect(Cars,selected,cmt) as data,i}
       <circle 
@@ -93,7 +91,7 @@ $:console.log(cmt);
 
 		</g>
 	</svg>
-  <svg width={width} {height}>
+  <svg class="stops" width={width} {height}>
 		<g class="stops" transform={`translate(${margin.left},${margin.top})`} >
 			{#each CarFilter.POIstop(Stop,selected) as data,i}
 				<rect
