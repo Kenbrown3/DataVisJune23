@@ -52,17 +52,7 @@
    import { Slider } from "fluent-svelte";
    let cmt=0;
    
-   let widthfunc=(xval)=>{
-    if(xval<5){
-      return xval;
-    }
-    if(xval>230){
-      return 5/(260-xval);
-    }
-    else{
-      return 5
-    }
-   }
+$:console.log(cmt);
 
    
 
@@ -118,7 +108,7 @@
       <rect
         y={stopscaley(Math.floor((cmt*60/86400)+6))-margin.top}
         x={stopscalex((cmt*60)%86400)+margin.right}
-        width={5}
+        width={stopscalex((cmt*60)%86400)+margin.right <= 255 ? 5 : 260 - stopscalex((cmt*60)%86400)+margin.right - 40}
         height={17}
         style={"fill:black"}
       />
