@@ -126,7 +126,7 @@
         x2={stopscalex(tick*60*60)+margin.right}
         y1={-1*margin.top}
         y2={height-margin.bottom-5}
-        stroke="white"
+        stroke="grey"
         opacity=0.5>        
         </line>
       {/each}
