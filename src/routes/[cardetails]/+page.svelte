@@ -12,7 +12,7 @@
 
 <script>
     import * as d3 from "d3";
-    import CarFilter from "./CarFilter";
+    import Page2Funcs from "./Page2Funcs";
     import {link} from 'svelte-routing'
     export let data;
     
@@ -70,7 +70,7 @@
 
 	<svg class="car" {width}{height}>
 		<g transform={`translate(${margin.left},${margin.top})`}>
-			{#each CarFilter.CarTrackNonSelect(Cars,selected) as data,i}
+			{#each Page2Funcs.CarTrackNonSelect(Cars,selected) as data,i}
 				<circle 
 				cx={xscale(data.long)}
 				cy={yscale(data.lat)}
@@ -80,7 +80,7 @@
         <!-- <title>{data.cumulative_minute_total}</title> -->
       </circle>
 			{/each}
-      {#each CarFilter.CarTrackSelect(Cars,selected,cmt) as data,i}
+      {#each Page2Funcs.CarTrackSelect(Cars,selected,cmt) as data,i}
       <circle 
       cx={xscale(data.long)}
       cy={yscale(data.lat)}
@@ -93,7 +93,7 @@
 	</svg>
   <svg class="stops" width={width} {height}>
 		<g class="stops" transform={`translate(${margin.left},${margin.top})`} >
-			{#each CarFilter.POIstop(Stop,selected) as data,i}
+			{#each Page2Funcs.POIstop(Stop,selected) as data,i}
 				<rect
           x={stopscalex(data.start.time)+margin.right}
           y={stopscaley(data.start.day)-margin.top}
