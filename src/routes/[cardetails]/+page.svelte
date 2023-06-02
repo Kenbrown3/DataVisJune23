@@ -75,8 +75,8 @@
 				cx={xscale(data.long)}
 				cy={yscale(data.lat)}
 				r=3
-				fill="teal"
-				fill-opacity=0.05>
+				fill="blue"
+				fill-opacity=0.07>
         <!-- <title>{data.cumulative_minute_total}</title> -->
       </circle>
 			{/each}

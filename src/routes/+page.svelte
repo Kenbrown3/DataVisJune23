@@ -62,7 +62,7 @@ var colorscale=d3.scaleOrdinal(["professional","housing","catering","domestic","
 				cy={yscale(data.lat)}
 				r=3
 				fill="black"
-				fill-opacity=.03/>
+				fill-opacity=.05/>
 			{/each}
 			{#each POIs as data,i}
 			<circle 
